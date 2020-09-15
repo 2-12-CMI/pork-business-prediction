@@ -1,5 +1,9 @@
-import withLayout from "../layout/main";
+import mainLayout from "../layout/main";
 
-const Page = () => <p>Hello Next.js</p>;
+const Page = () => (
+  <p>
+    <h1>Main</h1>
+  </p>
+);
 
-export default withLayout(Page);
+export default mainLayout(Page);

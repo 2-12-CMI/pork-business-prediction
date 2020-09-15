@@ -1,18 +1,14 @@
 import Header from "../components/Header";
+import "../styles/reset.scss";
+import "../styles/global.scss";
 
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-  border: "1px solid #DDD",
-};
-
-const withLayout = (Page) => {
+const mainLayout = (Page) => {
   return () => (
-    <div style={layoutStyle}>
+    <div>
       <Header />
       <Page />
     </div>
   );
 };
 
-export default withLayout;
+export default mainLayout;
