@@ -2,7 +2,7 @@ import mainLayout from "../layout/main";
 
 const Page = () => (
   <p>
-    <h1>Main</h1>
+    <h1>News</h1>
   </p>
 );
 
