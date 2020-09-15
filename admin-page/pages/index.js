@@ -1,16 +1,5 @@
-import "../styles/index.scss";
+import withLayout from "../layout/main";
 
-const Index = () => (
-  <div>
-    <h1>Hello, Next.js</h1>
-    <style jsx>
-      {`
-        h1 {
-          color: red;
-        }
-      `}
-    </style>
-  </div>
-);
+const Page = () => <p>Hello Next.js</p>;
 
-export default Index;
+export default withLayout(Page);
