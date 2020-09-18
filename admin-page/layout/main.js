@@ -15,6 +15,7 @@ const mainLayout = (Page) => {
         {`
           .contents {
             display: flex;
+            width: 100%;
           }
         `}
       </style>
