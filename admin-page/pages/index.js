@@ -1,9 +1,12 @@
 import mainLayout from "../layout/main";
+import "../styles/page.scss";
 
-const Page = () => (
-  <p>
-    <h1>Main</h1>
-  </p>
-);
+const Page = () => {
+  return (
+    <div className="container">
+      <div className="page-name">Dashboard</div>
+    </div>
+  );
+};
 
 export default mainLayout(Page);

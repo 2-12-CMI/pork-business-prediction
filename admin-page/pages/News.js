@@ -1,9 +1,10 @@
 import mainLayout from "../layout/main";
 
-const Page = () => (
-  <p>
-    <h1>News</h1>
-  </p>
-);
-
+const Page = () => {
+  return (
+    <div className="container">
+      <div className="page-name">News</div>
+    </div>
+  );
+};
 export default mainLayout(Page);
