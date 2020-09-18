@@ -1,0 +1,19 @@
+.header {
+    background: #6777ef;
+    height: 4.375rem;
+
+    .logo-box {
+        display: flex;
+        width: 15rem;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background: #4C60DA;
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+}
