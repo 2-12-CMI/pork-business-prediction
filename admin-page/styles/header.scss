@@ -1,0 +1,40 @@
+.header {
+    background: #6777ef;
+    height: 4.375rem;
+    display: flex;
+    align-items: center;
+
+    .logo-box {
+        display: flex;
+        width: 15rem;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background: #4C60DA;
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+
+    .menu {
+        margin-left: 1.4rem;
+
+    }
+
+    .user {
+        margin-left: auto;
+        margin-right: 1.6rem;
+        color: white;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+
+        div {
+            margin-left: 0.3rem;
+        }
+
+    }
+}
