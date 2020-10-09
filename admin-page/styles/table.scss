@@ -22,3 +22,28 @@ table {
         font-weight: bold;
     }
 }
+
+.pagination-wrap {
+    display: flex;
+    justify-content: center;
+
+    .pagination {
+        display: flex;
+
+        div {
+            color: gray;
+            padding: 0px 0.5rem;
+            cursor: pointer;
+            padding: 7px;
+            // margin: 0px 1px;
+            border: 1px solid rgb(223, 223, 223);
+
+            &.current {
+                background-color: rgb(79, 135, 255) !important;
+                color: white !important;
+                font-weight: bold;
+            }
+        }
+
+    }
+}

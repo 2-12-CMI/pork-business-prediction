@@ -1,6 +1,21 @@
 import "../styles/table.scss";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const Table = () => {
+  const router = useRouter();
+
+  const pageNationList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
+  const [currentPage, setCurrentPage] = useState(
+    router.query.page ? router.query.page : "1",
+  );
+
+  useEffect(() => {
+    if (router.query.page) setCurrentPage(router.query.page);
+  }, [router.query.page]);
+
   const header = [
     {
       view: "ID",
@@ -84,16 +99,26 @@ const Table = () => {
   ];
 
   const Header = () => {
-    return header.map((col) => <th>{col.view}</th>);
+    return header.map((col) => <th key={col.key}>{col.view}</th>);
   };
 
   const Body = () => {
     return datas.map((row) => (
-      <tr>
+      <tr key={row.id}>
         {header.map((col) => (
-          <td>{row[col.key]}</td>
+          <td key={row[col.key]}>{row[col.key]}</td>
         ))}
       </tr>
+    ));
+  };
+
+  const PageNation = () => {
+    return pageNationList.map((page) => (
+      <Link href={{ pathname: router.pathname, query: { page } }} key={page}>
+        <div className={currentPage === page ? "current shadow" : "shadow"}>
+          {page}
+        </div>
+      </Link>
     ));
   };
 
@@ -109,6 +134,11 @@ const Table = () => {
           <Body />
         </tbody>
       </table>
+      <div className="pagination-wrap">
+        <div className="pagination">
+          <PageNation />
+        </div>
+      </div>
     </>
   );
 };
