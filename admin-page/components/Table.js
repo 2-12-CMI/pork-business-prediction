@@ -28,13 +28,16 @@ const Table = ({ url, header }) => {
 
   useEffect(() => {
     if (router.query.page) setCurrentPage(router.query.page);
+  }, [router.query.page]);
+
+  useEffect(() => {
     axios.get(url, { params: { page: currentPage } }).then((res) => {
       setData(res.data);
     });
     axios.get(`${url}/maxpage`).then((res) => {
       setMaxPage(res.data.maxpage);
     });
-  }, [router.query.page]);
+  }, [currentPage]);
 
   const Header = () => {
     return header.map((col) => <th key={col.key}>{col.view}</th>);
