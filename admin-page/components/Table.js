@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import "../styles/table.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -40,8 +41,8 @@ const Table = ({ url, header }) => {
   };
 
   const Body = () => {
-    return data.map((row) => (
-      <tr key={row.id}>
+    return data.map((row, index) => (
+      <tr key={index}>
         {header.map((col) => (
           <td key={row[col.key]}>
             {col.key === "date" ? dateFormat(row[col.key]) : row[col.key]}
