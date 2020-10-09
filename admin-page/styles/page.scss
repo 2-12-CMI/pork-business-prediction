@@ -24,6 +24,14 @@
 
         }
 
+        &>.item:last-child {
+            &>.summary-card {
+                margin-right: 0rem;
+
+            }
+
+        }
+
         @media(max-width:1200px) {
             &>.item {
                 width: 50%;

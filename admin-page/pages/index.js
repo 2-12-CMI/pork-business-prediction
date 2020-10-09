@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa";
 import mainLayout from "../layout/main";
 import SummaryCard from "../components/SummaryCard";
+import Card from "../components/Card";
 import "../styles/page.scss";
 
 const Page = () => {
@@ -77,6 +78,9 @@ const Page = () => {
           ),
         )}
       </div>
+      <Card title="조정제">
+        <div>와우와우</div>
+      </Card>
     </div>
   );
 };
