@@ -44,12 +44,22 @@ router.get('/price/maxpage', async function (req, res, next) {
 });
 
 
-
 router.get('/consumption', async function (req, res, next) {
 
-  [rows] = await promisePool.query('SELECT * FROM consumption')
+  const limit = 10;
+  const page = req.query.page ? parseInt(req.query.page)  : 1;
+
+  const [rows] = await promisePool.query(`SELECT * FROM consumption_date ORDER BY DATE DESC LIMIT ${limit} OFFSET ${(page-1)*limit}`)
   res.json(rows)
 });
+
+router.get('/consumption/maxpage', async function (req, res, next) {
+  const limit = 10;
+  const [rows] = await promisePool.query(`SELECT count(*) as count FROM consumption_date`)
+  rows[0].maxpage =  parseInt(rows[0].count/limit)
+  res.json(rows[0])
+});
+
 
 router.get('/import', async function (req, res, next) {
 
