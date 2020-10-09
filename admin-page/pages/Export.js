@@ -14,33 +14,21 @@ const Page = () => {
       key: "month",
     },
     {
-      view: "일",
-      key: "day",
+      view: "quarantine",
+      key: "quarantine",
     },
     {
-      view: "producer_price",
-      key: "producer_price",
-    },
-    {
-      view: "wholesale_avg_price",
-      key: "wholesale_avg_price",
-    },
-    {
-      view: "wholesale_best_price",
-      key: "wholesale_best_price",
-    },
-    {
-      view: "consumer_price",
-      key: "consumer_price",
+      view: "customs_clearance",
+      key: "customs_clearance",
     },
   ];
 
   return (
     <div className="container">
-      <div className="page-name">Price</div>
+      <div className="page-name">Export</div>
       <div>
         <Card>
-          <Table header={header} url="http://localhost:3001/price" />
+          <Table header={header} url="http://localhost:3001/export" />
         </Card>
       </div>
     </div>

@@ -1,112 +1,55 @@
+/* eslint-disable react/no-array-index-key */
 import "../styles/table.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import dateFormat from "../common/dateForamt";
 
-const Table = () => {
+const Table = ({ url, header }) => {
   const router = useRouter();
-
-  const pageNationList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
   const [currentPage, setCurrentPage] = useState(
     router.query.page ? router.query.page : "1",
   );
+  const [data, setData] = useState([]);
+  const [maxPage, setMaxPage] = useState(0);
+
+  let pageNationList = [];
+
+  if (Number(currentPage) <= 5) {
+    pageNationList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  } else {
+    for (let i = Number(currentPage) - 5; i < Number(currentPage) + 5; i += 1) {
+      pageNationList.push(String(i));
+      if (i === maxPage) break;
+    }
+  }
 
   useEffect(() => {
     if (router.query.page) setCurrentPage(router.query.page);
   }, [router.query.page]);
 
-  const header = [
-    {
-      view: "ID",
-      key: "id",
-    },
-    {
-      view: "구분",
-      key: "type",
-    },
-    {
-      view: "제목",
-      key: "title",
-    },
-    {
-      view: "작성날짜",
-      key: "date",
-    },
-  ];
-
-  const datas = [
-    {
-      id: 1,
-      type: "pigtimes",
-      title: "ASF재입식 절차 9월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 2,
-      type: "pigtimes2",
-      title: "ASF재입식 절차 1월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 3,
-      type: "pigtimes3",
-      title: "ASF재입식 절차 2월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 4,
-      type: "pigtimes3",
-      title: "ASF재입식 절차 2월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 5,
-      type: "pigtimes3",
-      title: "ASF재입식 절차 2월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 6,
-      type: "pigtimes3",
-      title: "ASF재입식 절차 2월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 7,
-      type: "pigtimes3",
-      title: "ASF재입식 절차 2월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 8,
-      type: "pigtimes3",
-      title: "ASF재입식 절차 2월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 9,
-      type: "pigtimes3",
-      title: "ASF재입식 절차 2월부터 진행키로",
-      date: "2020-08-30",
-    },
-    {
-      id: 10,
-      type: "pigtimes3",
-      title: "ASF재입식 절차 2월부터 진행키로",
-      date: "2020-08-30",
-    },
-  ];
+  useEffect(() => {
+    axios.get(url, { params: { page: currentPage } }).then((res) => {
+      setData(res.data);
+    });
+    axios.get(`${url}/maxpage`).then((res) => {
+      setMaxPage(res.data.maxpage);
+    });
+  }, [currentPage]);
 
   const Header = () => {
     return header.map((col) => <th key={col.key}>{col.view}</th>);
   };
 
   const Body = () => {
-    return datas.map((row) => (
-      <tr key={row.id}>
+    return data.map((row, index) => (
+      <tr key={index}>
         {header.map((col) => (
-          <td key={row[col.key]}>{row[col.key]}</td>
+          <td key={row[col.key]}>
+            {col.key === "date" ? dateFormat(row[col.key]) : row[col.key]}
+          </td>
         ))}
       </tr>
     ));
