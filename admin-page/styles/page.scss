@@ -1,8 +1,51 @@
 .container {
+    width: calc(100% - 15rem);
     padding: 35px 20px;
 
     .page-name {
         font-size: 1.6rem;
         color: rgb(82, 82, 82);
     }
+
+    .summary {
+        display: flex;
+        width: 100%;
+        margin: 40px 0px;
+        flex-wrap: wrap;
+
+        &>.item {
+            width: 25%;
+            margin-bottom: 1.5rem;
+
+            &>.summary-card {
+                margin-right: 1.5rem;
+
+            }
+
+        }
+
+        &>.item:last-child {
+            &>.summary-card {
+                margin-right: 0rem;
+
+            }
+
+        }
+
+        @media(max-width:1200px) {
+            &>.item {
+                width: 50%;
+
+            }
+        }
+
+        @media(max-width:700px) {
+            &>.item {
+                width: 100%;
+
+            }
+        }
+
+    }
+
 }

@@ -1,0 +1,55 @@
+.summary-card {
+    background: white;
+    display: flex;
+    // height: 6rem;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
+    border-radius: .375rem;
+    padding: 20px;
+    align-items: center;
+
+    .info {
+        .title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: rgb(112, 112, 112);
+            margin-bottom: 0.5rem;
+        }
+
+        .content {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: rgb(90, 90, 90);
+            margin-bottom: 0.8rem;
+
+        }
+
+        .bottom {
+            display: flex;
+            font-size: 0.7rem;
+
+            .increase {
+                display: flex;
+                color: #66bb6a;
+            }
+
+            .decrease {
+                display: flex;
+                color: #fc544b;
+            }
+
+            .status {
+                margin-left: 0.2rem;
+                margin-right: 0.4rem;
+            }
+
+            .text {
+                color: gray;
+            }
+        }
+    }
+
+    .icon {
+        margin-left: auto;
+    }
+
+}
