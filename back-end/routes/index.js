@@ -43,7 +43,6 @@ router.get('/price/maxpage', async function (req, res, next) {
   res.json(rows[0])
 });
 
-
 router.get('/consumption', async function (req, res, next) {
 
   const limit = 10;
@@ -60,7 +59,6 @@ router.get('/consumption/maxpage', async function (req, res, next) {
   res.json(rows[0])
 });
 
-
 router.get('/import', async function (req, res, next) {
 
   const limit = 10;
@@ -76,7 +74,6 @@ router.get('/import/maxpage', async function (req, res, next) {
   rows[0].maxpage =  parseInt(rows[0].count/limit) + (rows[0].count%limit ? 1 : 0)
   res.json(rows[0])
 });
-
 
 router.get('/export', async function (req, res, next) {
 
@@ -115,13 +112,7 @@ router.get('/chart/price', async function (req, res, next) {
   SELECT * FROM price3_date WHERE date>="${req.query.start}" AND DATE<="${req.query.end}"  ORDER BY date ASC;
   `)
   // console.log(result[0][0].map((val)=> val.date))
-  res.json({
-    date: rows.map(value => value.date),
-    producer_price: rows.map(value => value.producer_price),
-    wholesale_avg_price: rows.map(value => value.wholesale_avg_price),
-    wholesale_best_price: rows.map(value => value.wholesale_best_price),
-    consumer_price: rows.map(value => value.consumer_price),
-  })
+  res.json(rows)
 });
 
 router.get('/chart/consumption', async function (req, res, next) {
@@ -130,11 +121,7 @@ router.get('/chart/consumption', async function (req, res, next) {
   SELECT * FROM consumption_date WHERE date>="${req.query.start}" AND DATE<="${req.query.end}" AND volume >= 10000 ORDER BY date ASC;
   `)
   // console.log(result[0][0].map((val)=> val.date))
-  res.json({
-    date: rows.map(value => value.date),
-    volume: rows.map(value => value.volume),
-    judgment_head: rows.map(value => value.judgment_head),
-  })
+  res.json(rows)
 });
 
 router.get('/topic/:id', async function (req, res, next) {

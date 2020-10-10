@@ -19,33 +19,56 @@
 
             &>.summary-card {
                 margin-right: 1.5rem;
-
             }
-
         }
 
         &>.item:last-child {
             &>.summary-card {
                 margin-right: 0rem;
-
             }
-
         }
 
-        @media(max-width:1200px) {
+        @media (max-width: 1200px) {
             &>.item {
                 width: 50%;
-
             }
         }
 
-        @media(max-width:700px) {
+        @media (max-width: 700px) {
             &>.item {
                 width: 100%;
-
             }
         }
-
     }
 
+    .card {
+        .title {
+            padding-top: 20px;
+            padding-left: 20px;
+            font-weight: bold;
+            color: #6777ef !important;
+        }
+
+        .chart {
+            height: 500px;
+            background: white;
+            position: relative;
+
+            .graphContainer {
+                height: 500px;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                z-index: 0;
+            }
+
+            .secondGraph {
+                height: 500px;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                z-index: 4;
+            }
+        }
+    }
 }

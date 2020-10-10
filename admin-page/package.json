@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@nivo/line": "^0.62.0",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.20.0",
     "next": "9.3.5",
