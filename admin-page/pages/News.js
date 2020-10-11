@@ -21,6 +21,14 @@ const Page = () => {
       view: "작성날짜",
       key: "date",
     },
+    {
+      view: "뉴스링크",
+      key: "url",
+    },
+    {
+      view: "토픽모델링",
+      key: "topic_modeling",
+    },
   ];
 
   return (

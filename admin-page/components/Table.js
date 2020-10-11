@@ -43,13 +43,47 @@ const Table = ({ url, header }) => {
     return header.map((col) => <th key={col.key}>{col.view}</th>);
   };
 
+  function rowFormat(col, row) {
+    switch (col.key) {
+      case "date":
+        return dateFormat(row[col.key]);
+      case "url":
+        return (
+          <button
+            type="button"
+            onClick={() => {
+              window.open(row[col.key], "PopupWin", "width=1200,height=800");
+            }}
+          >
+            기사원문
+          </button>
+        );
+      case "topic_modeling":
+        return (
+          <button
+            type="button"
+            onClick={() => {
+              window.open(
+                `http://175.205.223.40:3000/topic/${row.id}`,
+                "PopupWin",
+                "width=1200,height=800",
+              );
+            }}
+          >
+            기사원문
+          </button>
+        );
+
+      default:
+        return row[col.key];
+    }
+  }
+
   const Body = () => {
     return data.map((row, index) => (
       <tr key={index}>
         {header.map((col) => (
-          <td key={row[col.key]}>
-            {col.key === "date" ? dateFormat(row[col.key]) : row[col.key]}
-          </td>
+          <td key={row[col.key]}>{rowFormat(col, row)}</td>
         ))}
       </tr>
     ));
