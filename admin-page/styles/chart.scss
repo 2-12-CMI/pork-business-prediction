@@ -1,0 +1,15 @@
+.date-selector {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    background: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    .wave::after {
+        content: "~";
+        margin-left: 10px;
+        margin-right: 10px;
+        font-weight: bold;
+    }
+}

@@ -1,10 +1,10 @@
 /* eslint-disable react/no-array-index-key */
-import "../styles/table.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import dateFormat from "../common/dateForamt";
+import dateFormat from "../common/dateFormat";
+import "../styles/table.scss";
 
 const Table = ({ url, header }) => {
   const router = useRouter();

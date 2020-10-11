@@ -6,14 +6,14 @@ import {
 } from "react-icons/fa";
 import mainLayout from "../layout/main";
 import SummaryCard from "../components/SummaryCard";
-import Card from "../components/Card";
+import { LatestMonthPriceChart } from "../components/Chart";
 import "../styles/page.scss";
 
 const Page = () => {
   const summaryCards = [
     {
       id: 1,
-      title: "PORK WEEKLY PRICE",
+      title: "Price",
       content: "₩ 24,014",
       status: "3.48%",
       statusIncrease: true,
@@ -78,9 +78,14 @@ const Page = () => {
           ),
         )}
       </div>
-      <Card title="조정제">
-        <div>와우와우</div>
-      </Card>
+      <div className="card shadow">
+        <div className="title">
+          최근 한달간 돼지고기 소비자가격 (삽겹살 원/kg)
+        </div>
+        <div className="chart">
+          <LatestMonthPriceChart />
+        </div>
+      </div>
     </div>
   );
 };
