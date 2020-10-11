@@ -154,6 +154,36 @@ router.get('/topic/:id', async function (req, res, next) {
 
 });
 
+router.get('/topic/date/:date', async function (req, res, next) {
+
+  // [rows] = await promisePool.query(`SELECT * FROM pigtimes2 WHERE DATE>="${req.query.start}" AND DATE<="${req.query.end}"`)
+  [rows] = await promisePool.query(`SELECT * FROM pigtimes2 WHERE DATE="${req.params.date}"`)
+  var contents = ''
+
+  for (const row of rows) {
+    contents += ' ' + row.title + ' ' + row.contents
+  }
+  // console.log(contents)
+
+  var rst = await fetch('http://127.0.0.1:5000/topicModeling', {
+    method: 'POST',
+    body: JSON.stringify({news:contents}),
+    headers: { 'Content-Type': 'application/json' }
+  })
+
+  const topics = await rst.json()
+
+  console.log(topics)
+
+  res.json({
+    title: rows[0].title,
+    contents: rows[0].contents,
+    // topics: topic_modeling(contents, 1, 5)[0]
+    topics: topics
+  })
+
+});
+
 // router.get('/topics', async function (req, res, next) {
 
 //   [rows] = await promisePool.query(`SELECT * FROM pigtimes2 WHERE DATE>="${req.query.start}" AND DATE<="${req.query.end}"`)
