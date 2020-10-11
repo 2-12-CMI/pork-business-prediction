@@ -1,7 +1,8 @@
 import axios from "axios";
-
-import { ResponsiveLine } from "@nivo/line";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { ResponsiveLine } from "@nivo/line";
+import dateFormat from "../../common/dateFormat";
 // import moneyFormat from "../../common/moneyFormat";
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
@@ -10,11 +11,16 @@ import { useState, useEffect } from "react";
 // you'll often use just a few of them.
 const TradingVolume = () => {
   const [data, setData] = useState([]);
-
+  const chartDate = useSelector((state) => {
+    return state.ChartDate;
+  });
   useEffect(() => {
     axios
       .get("http://localhost:3001/chart/consumption", {
-        params: { start: "2020-04-01", end: "2020-05-31" },
+        params: {
+          start: dateFormat(chartDate.start, "-"),
+          end: dateFormat(chartDate.end, "-"),
+        },
       })
       .then((res) => {
         const volume = res.data.map((item) => ({
@@ -40,7 +46,7 @@ const TradingVolume = () => {
           },
         ]);
       });
-  }, []);
+  }, [chartDate]);
   return (
     <ResponsiveLine
       data={data}

@@ -5,7 +5,7 @@ import PriceChart from "./Price";
 import NewsChart from "./News";
 import TradingVolumeChart from "./trading-voluem";
 import IntergratedChart from "./Intergrated";
-import SecondLineChart from "./SecondLineChart";
+import DateSelector from "./DateSelector";
 
 export {
   LineChart as default,
@@ -15,5 +15,5 @@ export {
   LineChart,
   TradingVolumeChart,
   IntergratedChart,
-  SecondLineChart,
+  DateSelector,
 };
