@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BsNewspaper } from "react-icons/bs";
+import { FaHighlighter } from "react-icons/fa";
 import dateFormat from "../common/dateFormat";
 import "../styles/table.scss";
 
@@ -49,29 +51,30 @@ const Table = ({ url, header }) => {
         return dateFormat(row[col.key]);
       case "url":
         return (
-          <button
-            type="button"
-            onClick={() => {
-              window.open(row[col.key], "PopupWin", "width=1200,height=800");
-            }}
-          >
-            기사원문
-          </button>
+          <div className="news-link">
+            <BsNewspaper
+              type="button"
+              className="button-green"
+              onClick={() => {
+                window.open(row[col.key], "PopupWin", "width=1200,height=800");
+              }}
+            />
+          </div>
         );
       case "topic_modeling":
         return (
-          <button
-            type="button"
-            onClick={() => {
-              window.open(
-                `http://175.205.223.40:3000/topic/${row.id}`,
-                "PopupWin",
-                "width=1200,height=800",
-              );
-            }}
-          >
-            기사원문
-          </button>
+          <div className="topic-modeling">
+            <FaHighlighter
+              type="button"
+              onClick={() => {
+                window.open(
+                  `http://175.205.223.40:3000/topic/${row.id}`,
+                  "PopupWin",
+                  "width=1200,height=800",
+                );
+              }}
+            />
+          </div>
         );
 
       default:
