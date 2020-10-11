@@ -1,5 +1,14 @@
 import Link from "next/link";
 import "../styles/sidebar.scss";
+import { BsNewspaper } from "react-icons/bs";
+import {
+  FaTruckLoading,
+  FaMoneyBillWave,
+  FaChartLine,
+  FaHighlighter,
+} from "react-icons/fa";
+import { CgAirplane } from "react-icons/cg";
+import { AiOutlineAreaChart, AiOutlineDashboard } from "react-icons/ai";
 
 const Sidebar = () => {
   const data = [
@@ -11,6 +20,7 @@ const Sidebar = () => {
           id: "1-1",
           label: "Dashboard",
           href: "/",
+          icon: <AiOutlineDashboard style={{ fontSize: "1.0rem" }} />,
         },
       ],
     },
@@ -22,26 +32,31 @@ const Sidebar = () => {
           id: "2-1",
           label: "News",
           href: "/news",
+          icon: <BsNewspaper />,
         },
         {
           id: "2-2",
           label: "Price",
           href: "/price",
+          icon: <FaMoneyBillWave />,
         },
         {
           id: "2-3",
           label: "Trading Volume",
           href: "/trading-volume",
+          icon: <FaTruckLoading />,
         },
         {
           id: "2-4",
           label: "Import",
           href: "/import",
+          icon: <CgAirplane style={{ fontSize: "1.0rem" }} />,
         },
         {
           id: "2-5",
           label: "Export",
           href: "/export",
+          icon: <CgAirplane style={{ fontSize: "1.0rem" }} />,
         },
       ],
     },
@@ -53,16 +68,19 @@ const Sidebar = () => {
           id: "3-1",
           label: "Price",
           href: "/statistics/price",
+          icon: <AiOutlineAreaChart style={{ fontSize: "1.0rem" }} />,
         },
         {
           id: "3-2",
           label: "Trading Volume",
           href: "/statistics/trading-volume",
+          icon: <AiOutlineAreaChart style={{ fontSize: "1.0rem" }} />,
         },
         {
           id: "3-3",
           label: "Intergrated Chart",
           href: "/statistics/intergrated-chart",
+          icon: <AiOutlineAreaChart style={{ fontSize: "1.0rem" }} />,
         },
       ],
     },
@@ -74,11 +92,13 @@ const Sidebar = () => {
           id: "4-1",
           label: "Topic Modeling",
           href: "/analysis/topic-modeling",
+          icon: <FaHighlighter />,
         },
         {
           id: "4-2",
           label: "Prediction",
           href: "/analysis/topic-modeling",
+          icon: <FaChartLine />,
         },
       ],
     },
@@ -95,9 +115,13 @@ const Sidebar = () => {
     Category = Category.concat(
       category.links.map((link) => {
         return (
-          <Link key={link.id} href={link.href}>
-            <div className="menu">{link.label}</div>
-          </Link>
+          <>
+            <Link key={link.id} href={link.href}>
+              <div className="menu">
+                {link.icon} {link.label}
+              </div>
+            </Link>
+          </>
         );
       }),
     );

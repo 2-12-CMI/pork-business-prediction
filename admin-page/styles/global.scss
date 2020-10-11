@@ -12,6 +12,13 @@ body {
   box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
 }
 
-.button-green {
-  background: green;
+.logo-img {
+  width: 35px;
+  margin-right: 5px;
+}
+
+.news-link,
+.topic-modeling {
+  cursor: pointer;
+  font-size: 1.2rem;
 }
