@@ -7,6 +7,18 @@
 
 ------
 ## 🐖Demo
+뉴스 데이터, Topic modeling
+
+![Oct-28-2020 21-20-49](https://user-images.githubusercontent.com/38103082/97435295-8fcd8680-1963-11eb-95a7-1d44ed34f008.gif)
+
+가격, 수출, 수입량 데이터를 차트로 보여줌
+
+![Oct-28-2020 21-16-45](https://user-images.githubusercontent.com/38103082/97434849-f7370680-1962-11eb-8ae7-f5451abb5d57.gif)
+
+기간별 Topic modeling, Topic들을 csv로 변환
+
+![Oct-28-2020 21-23-46](https://user-images.githubusercontent.com/38103082/97435560-ec30a600-1963-11eb-90ed-d2d9917b6a09.gif)
+
 
 ## 🧞Quick Start
 
